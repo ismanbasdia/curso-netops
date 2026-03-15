@@ -1,0 +1,1 @@
+This exercise is for you try the basic commands of git. The procedure i recommend you in the docs "Orientacion de la clase practica"
