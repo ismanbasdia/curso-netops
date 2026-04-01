@@ -188,13 +188,13 @@ Deberías ver el contenedor `pod_tunombre` con estado `Up`.
 
 ### Paso 5.3: Probar la aplicación
 
-Desde tu navegador (en tu máquina local), accede a:
+Desde tu navegador (en la amquina virtual), accede a:
 
 ```
-http://IP_DE_LA_VM:8080
+http://localhost:8080
 ```
 
-Deberías ver el mensaje de Domus Nova.
+Deberías ver el mensaje de Domus Nova o lo que hayas corrido como aplicacion 
 
 ### Paso 5.4: Ver los logs del contenedor
 
