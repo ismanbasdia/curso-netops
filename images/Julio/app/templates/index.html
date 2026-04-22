@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Laboratorio de Criptografía</title>
+        <style>
+            :root {
+                --primary-color: #2c3e50;
+                --secondary-color: #3498db;
+                --accent-color: #e74c3c;
+                --light-color: #ecf0f1;
+                --dark-color: #2c3e50;
+                --success-color: #2ecc71;
+                --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background-color: #f5f7fa;
+                color: #333;
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            header {
+                background: var(--gradient);
+                color: white;
+                padding: 60px 0;
+                text-align: center;
+                border-radius: 0 0 20px 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                margin-bottom: 40px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+                opacity: 0.9;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                padding: 30px;
+                margin-bottom: 30px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            }
+
+            .card h2 {
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .card h2 i {
+                color: var(--secondary-color);
+            }
+
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+                gap: 25px;
+                margin: 40px 0;
+            }
+
+            .step {
+                background: white;
+                border-radius: 12px;
+                padding: 25px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                text-align: center;
+                position: relative;
+                border-top: 4px solid var(--secondary-color);
+            }
+
+            .step-number {
+                position: absolute;
+                top: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--secondary-color);
+                color: white;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+            }
+
+            .step h3 {
+                margin: 15px 0 10px;
+                color: var(--primary-color);
+            }
+
+            .challenge {
+                background: var(--light-color);
+                border-left: 4px solid var(--accent-color);
+                padding: 20px;
+                margin: 25px 0;
+                border-radius: 0 8px 8px 0;
+            }
+
+            .code {
+                background: #2d3748;
+                color: #e2e8f0;
+                padding: 15px;
+                border-radius: 8px;
+                font-family: 'Courier New', monospace;
+                margin: 15px 0;
+                overflow-x: auto;
+            }
+
+            .btn {
+                display: inline-block;
+                background: var(--secondary-color);
+                color: white;
+                padding: 12px 25px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                border: none;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+
+            .btn:hover {
+                background: #2980b9;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .btn-accent {
+                background: var(--accent-color);
+            }
+
+            .btn-accent:hover {
+                background: #c0392b;
+            }
+
+            footer {
+                text-align: center;
+                margin-top: 50px;
+                padding: 20px;
+                color: #7f8c8d;
+                border-top: 1px solid #ddd;
+            }
+
+            .rot13-hint {
+                background: #fff9e6;
+                border: 1px dashed #f1c40f;
+                padding: 15px;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+
+            .rot13-box {
+                background: #2c3e50;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                font-family: 'Courier New', monospace;
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+                margin: 15px 0;
+            }
+
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 2.2rem;
+                }
+
+                .steps {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Bienvenido al Laboratorio de Criptografía</h1>
+                <p class="subtitle">Sumérgete en el mundo del cifrado y descifrado de información. Aprende los fundamentos de la criptografía moderna a través de este desafío práctico.</p>
+            </div>
+        </header>
+        <div class="container">
+            <div class="card">
+                <h2>📋 Instrucciones del Laboratorio</h2>
+                <p>Bienvenido al laboratorio de criptografía. En este ejercicio práctico, aprenderás sobre:</p>
+                <ul style="margin: 15px 0 15px 20px;">
+                    <li>Cifrado clásico para el descubrimiento de rutas</li>
+                    <li>Autenticación SSH con llaves públicas/privadas</li>
+                    <li>Cifrado asimétrico con RSA</li>
+                    <li>Flujo completo de cifrado/descifrado</li>
+                </ul>
+                <p>Sigue los pasos a continuación para completar el desafío.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Descubre la Ruta</h3>
+                    <p>Encuentra la ruta secreta cifrada para comenzar el desafío.</p>
+                    <div class="rot13-hint">
+                        <p><strong>Pista de Julio César:</strong> La ruta es "secret" y la clave es 5</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Descarga la Llave</h3>
+                    <p>Al acceder a la ruta correcta, podrás descargar una llave privada que te dará acceso al servidor.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Conecta al Servidor</h3>
+                    <p>Usa la llave privada para conectarte al servidor vía SSH en el puerto 3333.</p>
+                    <div class="code">
+                        $ chmod 600 "key_name"<br>
+                        $ ssh -i "key_name" estudiante@181.225.233.172 -p "port_number"
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Siguiente etapa</h3>
+                    <p>En el servidor encontrarás las indicaciones para la siguiente fase.</p>
+                </div>
+
+                <div class="card">
+                    <h2>📚 Recursos adicionales</h2>
+                    <p>Aquí te mostramos alguno de los conceptos adicionales:</p>
+                
+                    <div class="challenge">
+                        <h3>¿Qué es ROT13?</h3>
+                        <p>ROT13 es un caso especial del cifrado César con desplazamiento 13. Como el alfabeto inglés tiene 26 letras, aplicar ROT13 dos veces devuelve el texto original.</p>
+                    </div>
+
+                    <div class="challenge">
+                        <h3>¿Cómo funciona el cifrado RSA?</h3>
+                        <p>RSA es un algoritmo de cifrado asimétrico que utiliza un par de llaves: una pública para cifrar y una privada para descifrar. Es ampliamente utilizado en comunicaciones seguras.</p>
+                    </div>
+
+                    <div class="challenge">
+                        <h3>¿Herramienta de cifrado?</h3>
+                        <p>Hay muchas soluciones que permiten calcular y ejecutar algoritmos criptográficos. Una muy interesante es la herramienta online https://cyberchef.org.</p>
+                    </div>
+                </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>Laboratorio de Criptografía - Diseñado para aprendizaje práctico</p>
+                <p>Prof. Ariel Baloira Reyes</p>
+                <p>2025-2026</p>
+            </div>
+        </footer>
+    </body>
+</html>
